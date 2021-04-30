@@ -26,7 +26,10 @@ function bi(){
   var q = pow((1-p), (n-x));
   var prob = (Math.round((comb*exp*q) * 100) / 100).toFixed(2);
   var cumulative = 0;
-  
+  labels = [];
+  dataset = [];
+  color = [];
+  ans = [];
 
   for(var i = 0; i <= n; i++){
     comb = combination(n,i);
@@ -62,6 +65,9 @@ function bi(){
     document.getElementById("var").innerHTML = ans[4];
     console.log(labels);
     console.log(dataset);
+    g = document.createElement('canvas');
+    g.setAttribute("id","chart"); g.setAttribute("width","640px"); g.setAttribute("height","420px");
+    document.getElementById("chart").replaceWith(g);
     chart(labels, dataset, color);
   }
   else{

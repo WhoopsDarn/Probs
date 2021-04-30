@@ -16,15 +16,16 @@ function hyper(){
   var k = document.getElementById('k').value;
   var x = document.getElementById('x').value;
 
-  console.log(k);
-  console.log(x);
   var comb_n1 = combination(k,x);
   var comb_n2 = combination((N-k), (n-x));
   var comb_d = combination(N,n);
 
   var prob = (Math.round(((comb_n1*comb_n2)/comb_d) * 100) / 100).toFixed(2);
   var cumulative = 0;
-
+  labels = [];
+  dataset = [];
+  color = [];
+  ans = [];
 
   for(var i = 0; i <= N; i++){
     comb_n1 = combination(k,i);
@@ -56,6 +57,9 @@ function hyper(){
     document.getElementById("var").innerHTML = ans[4];
     console.log(labels);
     console.log(dataset);
+    g = document.createElement('canvas');
+    g.setAttribute("id","chart"); g.setAttribute("width","640px"); g.setAttribute("height","420px");
+    document.getElementById("chart").replaceWith(g);
     chart(labels, dataset, color);
   }
   else{
